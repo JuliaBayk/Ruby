@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player:</b>
+  <%= @move.player %>
+</p>
+
+<p>
+  <b>All:</b>
+  <%= @move.all %>
+</p>
+
+<p>
+  <b>Take:</b>
+  <%= @move.take %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @move.Note_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_move_path(@move) %> |
+<%= link_to 'Back', moves_path %>

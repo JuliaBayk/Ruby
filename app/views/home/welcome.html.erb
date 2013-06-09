@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+			<form>
+				<input type="button" id="new" value="Начать игру">
+			</form>
+				<script>	
+				var but=document.getElementById('new')
+				but.addEventListener("click",
+					function getrandom() { 
+						var min_random = 20;
+						var max_random = 40;
+						max_random++;
+						var range = max_random - min_random;
+						var k=Math.floor(Math.random()*range) + min_random;
+						var choise= Math.random();
+							if (choise<=0.5) {
+								choise='Браузер';
+							}
+							else {
+								choise='Сервер';
+							}
+						alert("Количество палочек" + k +" Начинает " + choise);
+
+						if (choise=='Браузер') {
+									window.location.assign("/home/bro/?a=" + k + "&b=" + 0);
+								}
+								else {
+									window.location.assign("/home/redirector/?a=" + k + "&b=" + 0);
+								}
+					},
+				 false);
+			</script>
+
+	</body>
+</html>
