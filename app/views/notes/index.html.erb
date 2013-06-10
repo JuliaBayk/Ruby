@@ -1,25 +1,53 @@
-<h1>Listing notes</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      .block{ width:500px;
+              text-align:center;
+              margin:0 auto;}
 
-<table>
-  <tr>
-    <th>Winner</th>
-    <th>Steps</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      h3 {font: 15px/21px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+          margin-bottom:5px;}
 
-<% @notes.each do |note| %>
-  <tr>
-    <td><%= note.winner %></td>
-    <td><%= note.steps %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      body {background-color:#f5f6f7;
+            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;}
 
-<br />
+      table {border:1px solid black;
+              text-align:center;}
 
-<%= link_to 'New Note', new_note_path %>
+      th {font: 15px/21px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+          border:1px solid black;padding:3px;}
+
+      td {border:1px solid black;}
+    </style>
+  </head>
+
+  <body>
+   <div class="block">
+    <table>
+      <tr>
+        <th>Номер игры</th>
+        <th>Победитель</th>
+        <th>Кол-во шагов</th>
+        <th>Показать</th>
+        <th>Удалить</th>
+      </tr>
+
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.id %></td>
+        <td><%= note.winner %></td>
+        <td><%= note.steps %></td>
+        <td><%= link_to 'Show', note %></td>
+        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+    <a href="/home/welcome">Play again</a>
+    
+    </div>
+  </body>
+</html>

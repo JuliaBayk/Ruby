@@ -1,3 +1,3 @@
 class Note < ActiveRecord::Base
-  has_many :Moves
+  has_many :moves
 end

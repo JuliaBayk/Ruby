@@ -1,15 +1,72 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      .block{ width:500px;
+              text-align:center;
+              margin:0 auto;}
 
-<p>
-  <b>Winner:</b>
-  <%= @note.winner %>
-</p>
+      h2  { font: 21px/27px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+            margin-bottom:5px;}
 
-<p>
-  <b>Steps:</b>
-  <%= @note.steps %>
-</p>
+      body {background-color:#f5f6f7;
+            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;}
 
+      table { border:1px solid black;
+              text-align:center;}
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+      th { font: 15px/21px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+            border:1px solid black;
+            padding:3px;}
+
+      td {border:1px solid black;}
+    </style>
+  </head>
+  
+  <body>
+    <div class="block">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <b>Количество ходов:</b>
+        <%= @note.steps %>
+      </p>
+
+      <p>
+        <b>Победитель:</b>
+        <%if @note.winner=="Browser"%>
+              Браузер
+        <% else %>
+              Сервер
+        <% end %>
+      </p>
+
+      <h2>Ходы</h2>
+      <table>
+        <tr>
+          <th>Игрок</th>
+          <th>Осталось палочек до хода</th>
+          <th>Ход сделан</th>
+          <th>Игрок взял</th>
+        </tr>
+        <% @note.moves.each do |move| %>
+        <tr>
+          <td><%= move.player %></td>
+          <td><%= move.all %></td>
+          <td><%= move.created_at %></td>
+        	<td> <%= move.take%> </td>
+        </tr> 
+        <% end %>
+        <tfoot>
+          <tr>
+            <td colspan="4">Игра окончена</td>
+          </tr>
+        </tfoot>
+      </table>
+        
+      <a href="/home/welcome">Play again</a>|
+      <%= link_to 'Все игры', notes_path %>
+      
+    </div>
+  </body>
+</html>
